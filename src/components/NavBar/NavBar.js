@@ -1,5 +1,5 @@
 import CartWidget from "./CartWidget/CartWidget" 
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return(
@@ -9,10 +9,10 @@ const NavBar = () => {
             <h3>Baobab</h3>
       </Link>
       <div className="Categories">
-        <NavLink to={`/category/difusor`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Difusores</NavLink>
-        <NavLink to={`/category/vela`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Bombones</NavLink>
-        <NavLink to={`/category/perfume`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Perfuminas</NavLink>
-        <NavLink to={`/category/bombon`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Velas</NavLink>
+        <Link to={`/category/difusor`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Difusores</Link>
+        <Link to={`/category/vela`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Bombones</Link>
+        <Link to={`/category/perfume`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Perfuminas</Link>
+        <Link to={`/category/bombon`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Velas</Link>
       </div>
       <CartWidget />
     </nav>
