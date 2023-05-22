@@ -5,14 +5,16 @@ const NavBar = () => {
   return(
     
     <nav className="NavBar">
-      <Link to='/'>
+      <Link className="mih3" to='/'>
             <h3>Baobab</h3>
       </Link>
       <div className="Categories">
-        <Link to={`/category/difusor`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Difusores</Link>
-        <Link to={`/category/vela`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Bombones</Link>
-        <Link to={`/category/perfume`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Perfuminas</Link>
-        <Link to={`/category/bombon`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Velas</Link>
+        <Link className="nav-link" to="/category/difusor">Difusores</Link>
+        <Link className="nav-link" to="/category/:categoryId">Velas</Link>
+        <Link className="nav-link" to="/category/:categoryId">Perfumes</Link>
+        <Link className="nav-link" to="/category/:categoryId">Bombones</Link>
+        
+        
       </div>
       <CartWidget />
     </nav>

@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import {getProducts, getProductsByCategory} from '../../asyncMock'
+import {getProducts,getProductsByCategory} from '../../asyncMock'
 import ItemList from "../itemList/itemList";
 import { useParams } from "react-router-dom";
 
+
+
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
-
     const { categoryId } = useParams()
 
     useEffect(() => {
         const asyncFunc = categoryId ? getProductsByCategory : getProducts
-
-        asyncFunc(categoryId)
+        asyncFunc(categoryId) 
         .then(response => {
             setProducts(response)
         })
@@ -23,7 +23,7 @@ const ItemListContainer = ({greeting}) => {
 
     return(
         <div>
-            <h1 class="bg-secondary" >{greeting}</h1>
+            <h1 class="bg-success" >{greeting} Vea los productos disponibles</h1>
             <ItemList products={products}/>
         </div>
     )
