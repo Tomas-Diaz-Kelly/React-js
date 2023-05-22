@@ -23,7 +23,15 @@ const ItemListContainer = ({greeting}) => {
 
     return(
         <div>
-            <h1 class="bg-success" >{greeting} Vea los productos disponibles</h1>
+            <h1 className="text-md-start btn-beige" >{greeting} Vea los productos disponibles</h1>
+            <figure class="text-start">
+                <blockquote class="blockquote">
+                    <p>Productos 100% artesanales</p>
+                </blockquote>
+        <figcaption class="blockquote-footer">
+                Contactate con nosotros 
+        </figcaption>
+</figure>
             <ItemList products={products}/>
         </div>
     )

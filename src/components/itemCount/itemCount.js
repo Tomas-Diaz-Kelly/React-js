@@ -14,7 +14,25 @@ const ItemCount = ({stock,initial,onAdd}) => {
         }
     }
     return(
-    <div className="Counter">
+
+              <div className="Counter">
+                <div className="d-flex justify-content-center align-items-center">
+                  <button className="btn btn-danger" onClick={decrement}>-</button>
+                  <h3 className="Number mx-2">{quantity}</h3>
+                  <button className="btn btn-success" onClick={increment}>+</button>
+                </div>
+                <div>
+                  <button className="btn btn-primary mt-2" onClick={() => onAdd(quantity)} disabled={!stock}>
+                    Agregar al carrito
+                  </button>
+                </div>
+              </div>
+            );
+          }
+          
+          export default ItemCount
+          
+    /*<div className="Counter">
         <div className="Controls">
             <button className="Button" onClick={decrement}>-</button>
                 <h3 className="Number">{quantity} </h3>
@@ -25,10 +43,5 @@ const ItemCount = ({stock,initial,onAdd}) => {
                 Agregar al carrito 
             </button>
         </div>
-    </div>
-    )
+    </div>*/
 
-
-}
-
-export default ItemCount
