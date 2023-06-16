@@ -10,7 +10,7 @@ const NavBar = () => {
       <Link className="navbar-brand" to="/">
         <h3>Baobab</h3>
       </Link>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className="collapse navbar-collapse " id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/category/difusor">Difusores</Link>
