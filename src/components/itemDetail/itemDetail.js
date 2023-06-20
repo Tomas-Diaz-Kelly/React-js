@@ -4,6 +4,7 @@ import ItemCount  from "../itemCount/itemCount";
 import { CartContext } from "../../context/CartContext";
 
 
+
 const ItemDetail = ({ id, name, category, description, price, stock }) => { 
   const [quantityAdded, setQuantityAdded] = useState(0)
 
