@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs} from 'firebase/firestore'
+import {getFirestore, collection, getDocs, doc, getDoc, query ,where} from 'firebase/firestore'
 
 
 
@@ -28,6 +28,20 @@ export async function getData() {
 return dataDocs
 }
 
-function getItemData(){}
+export async function getItemData(itemId){
+  const docRef = doc(db, "products", itemId)
+  const docSnap = await getDoc(docRef)
+  return {id: docSnap.id , ...docSnap.data()}
+}
 
-function getCategoryData(){}
+
+
+export async function getCategoryData(categoryId){
+  const q = query(collection(db, "products"), where("category", "==", categoryId))
+  const productsSnapshot = await getDocs(q)
+  const arrayDocs = productsSnapshot.docs
+  const dataDocs = arrayDocs.map((doc) => {
+    return {...doc.data(), id: doc.id}
+  })
+  return dataDocs
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getProducts, getProductsByCategory } from '../../asyncMock';
 import ItemList from "../itemList/itemList";
 import { useParams } from "react-router-dom";
-import { getData } from "../../services/firebase";
+import { getCategoryData } from "../../services/firebase";
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
@@ -13,9 +13,9 @@ const ItemListContainer = ({ greeting }) => {
       try {
         let response;
         if (categoryId) {
-          response = await getData(getProductsByCategory, categoryId);
+          response = await getCategoryData(getProductsByCategory, categoryId);
         } else {
-          response = await getData(getProducts);
+          response = await getCategoryData(getProducts);
         }
         setProducts(response);
       } catch (error) {

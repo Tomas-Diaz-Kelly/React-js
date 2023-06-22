@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
-import {getProductsById} from "../../asyncMock" 
 import ItemDetail from "../itemDetail/itemDetail"
 import { useParams } from "react-router-dom"
+import { getItemData } from "../../services/firebase"
+
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
@@ -9,7 +10,7 @@ const ItemDetailContainer = () => {
     const {itemId} = useParams()
 
     useEffect(() => {
-        getProductsById(itemId)
+        getItemData(itemId)
         .then(response => {
             setProduct(response)
         })
