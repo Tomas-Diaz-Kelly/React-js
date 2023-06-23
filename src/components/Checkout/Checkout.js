@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createOrder } from '../../services/firebase';
 import Cart from '../Cart/Cart';
+import Swal from 'sweetalert2';
 
 const Checkout = () => {
   const [name, setName] = useState('');
@@ -8,27 +9,38 @@ const Checkout = () => {
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
 
-  const handleCheckout = async () => {
+  
+    const handleCheckout = async (e) => {
+      e.preventDefault();
     const order = {
-      items: Cart,
+      items: Cart(),
       buyer: {
         name: {name},
-        email:{email},
-        address:{address},
-        phone:{phone},
+        email: {email},
+        address: {address},
+        phone: {phone},
       },
     };
-  
+
     try {
       const orderId = await createOrder(order);
       console.log('Pedido realizado:', { orderId, ...order.buyer });
-      // Aquí puedes mostrar un cartel o realizar alguna otra acción con el número de orden de compra y los datos del comprador
+      Swal.fire({
+        icon: 'success',
+        title: '¡Pedido realizado!',
+        text: `Tu número de orden de compra es: ${orderId}`,
+        confirmButtonText: 'Aceptar'
+      });
     } catch (error) {
       console.error('Error al realizar el pedido:', error);
-      // Aquí puedes mostrar un mensaje de error al usuario si ocurre algún problema al realizar el pedido
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al realizar el pedido',
+        text: 'Ha ocurrido un problema al realizar tu pedido. Por favor, intenta nuevamente.',
+        confirmButtonText: 'Aceptar'
+      });
     }
   };
-
   return (
     <div className="checkout-form">
       <h2 className="checkout-title">Checkout</h2>
@@ -142,5 +154,7 @@ const Checkout = () => {
     </div>
   );
 };
+
+
 
 export default Checkout;

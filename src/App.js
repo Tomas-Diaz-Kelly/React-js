@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      
         <CartContextProvider>
           <NavBar />
           <Routes>
