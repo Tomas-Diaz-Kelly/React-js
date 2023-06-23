@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs, doc, getDoc, query ,where} from 'firebase/firestore'
+import {getFirestore, collection, getDocs, doc, getDoc, query ,where, addDoc} from 'firebase/firestore'
 
 
 
@@ -44,4 +44,11 @@ export async function getCategoryData(categoryId){
     return {...doc.data(), id: doc.id}
   })
   return dataDocs
+}
+
+export async function createOrder(data){
+  const ordersCollectionRef = collection(db, "orders" )
+
+  const response = await addDoc(ordersCollectionRef, data)
+  return response.id
 }

@@ -4,8 +4,10 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/itemListConteiner/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import Cart from './components/Cart/Cart';
-import Checkout from './components/Checkout/Checkout';
 import { CartContextProvider } from './context/CartContext';
+import Checkout from './components/Checkout/Checkout';
+
+
 
 function App() {
   return (

@@ -6,19 +6,18 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const { cart, clearCart, removeItemFromCart } = useContext(CartContext);
 
-  // Calcula la suma de todos los precios de los productos en el carrito
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   if (cart.length === 0) {
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h1>No hay productos en el carrito</h1>
         <Link to="/" className="Option">Volver a Productos</Link>
       </div>
     );
   } else {
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {cart.map((item) => (
           <CartItem key={item.id} item={item} removeItem={removeItemFromCart} />
         ))}
@@ -26,7 +25,7 @@ const Cart = () => {
         <button onClick={() => clearCart()} className="btn btn-danger mt-2">
           Limpiar carrito
         </button>
-        <Link to="../checkout/checkout.js" className="btn btn-success mt-2">Ir a pagar</Link>
+        <Link to="../checkout" className="btn btn-success mt-2">Ir a pagar</Link>
       </div>
     );
   }
