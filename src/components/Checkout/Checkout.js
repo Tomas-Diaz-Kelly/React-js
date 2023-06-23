@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { createOrder } from '../../services/firebase';
-import Cart from '../Cart/Cart';
 import Swal from 'sweetalert2';
+import { CartContext } from '../../context/CartContext';
 
 const Checkout = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
+  const {cart , clearCart} = useContext(CartContext)
+  
+
 
   
+ 
+
+
+
+
     const handleCheckout = async (e) => {
       e.preventDefault();
     const order = {
-      items: Cart(),
+      items: cart,
       buyer: {
         name: {name},
         email: {email},
@@ -31,6 +39,7 @@ const Checkout = () => {
         text: `Tu número de orden de compra es: ${orderId}`,
         confirmButtonText: 'Aceptar'
       });
+      clearCart();
     } catch (error) {
       console.error('Error al realizar el pedido:', error);
       Swal.fire({
@@ -100,6 +109,7 @@ const Checkout = () => {
         <button className="checkout-button" onClick={handleCheckout}>
           Realizar pedido
         </button>
+        
       </form>
 
       <style jsx>{`

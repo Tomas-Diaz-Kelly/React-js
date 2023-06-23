@@ -12,7 +12,7 @@ const Cart = () => {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h1>No hay productos en el carrito</h1>
-        <Link to="/" className="Option">Volver a Productos</Link>
+        <Link to="/" className="btn btn-primary">Volver a Productos</Link>
       </div>
     );
   } else {
